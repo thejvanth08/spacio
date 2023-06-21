@@ -1,0 +1,308 @@
+/* reset */
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+/* variables */
+:root {
+    --PRIMARY: #ffc6c6;
+    --SECONDARY: #0a0b5b;
+}
+
+/* fonts (custom) */
+@font-face {
+    font-family: "Rubic Regular";
+    src: url("./assets/fonts/Rubik-Regular.ttf");
+}
+
+/* base styles - not gonna change with screen sizes */
+body {
+    background-color: var(--SECONDARY);
+    /* as image is bigger, to avoid horizontal scroll bar */
+    overflow-x: hidden;
+    font-family: "Rubic Regular";
+}
+
+.btn {
+    /* by default button ele has bg */
+    background-color: none;
+    border: 2px solid var(--PRIMARY);
+    color: var(--PRIMARY);
+    padding: 6px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
+    display: inline-block;
+}
+
+.btn:hover {
+    color: #222;
+    background-color: var(--PRIMARY);
+}
+
+input, textarea {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px 16px;
+    border-radius: 20px;
+    border: 2px solid #9893d8;
+    color: #f2f2f2;
+}
+
+h1, h2, h3, h4 {
+    color: #dddbff;
+    font-weight: normal;
+}
+
+p, a, li {
+    color: #9393d8;
+}
+
+h1, h3 {
+    font-size: 1.2em; 
+}
+
+h2 {
+    font-size: 1.6em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+.leading {
+    font-size: 1.1em;
+}
+
+/* mobile styles (mobile first css) */
+.grid {
+    display: grid;
+    /* 8 columns layouts (col lines -> 1 to 9) */
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+}
+
+.site-nav {
+    margin: 0 20px;
+}
+
+.site-nav ul {
+    display: none;
+}
+
+.site-nav h1 {
+    grid-column: 1/4;
+    grid-row: 1;
+    padding: 10px 0;
+    border-bottom: 3px solid var(--PRIMARY);
+}
+
+#welcome {
+    /* top left-right bottom */
+    padding: 0 20px 20px;
+}
+
+.welcome-text {
+    grid-column: 1/6;
+}
+
+.welcome-img {
+    grid-column: 6/9;
+}
+
+.welcome-img img {
+    /* not 200% of width of the img but 2x of width of the container of img */
+    width: 200%;
+}
+
+.welcome-text a {
+    margin: 20px 0;
+}
+
+#portfolio {
+    background-image : url("./assets/square_bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    padding: 30px 20px;
+}
+
+#portfolio h3 {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.projects a {
+    /* to fill entire column size - width */
+    grid-column: 1/9;
+    margin: 20px 0;
+    display: flex;
+}
+
+/* to select all elements inside anchor tag */
+.projects a * {
+    margin: 0 20px;
+    /* changes width of both img, h4  */
+    max-width: 40%;
+    align-self: center;
+}
+
+.projects h4 {
+    color: #9994f7;
+}
+
+#skills {
+    padding: 30px 20px;
+    background-color: #07083e;
+}
+
+#skills h3 {
+    text-align: center;
+}
+
+#skills ul {
+    margin: 40px 0;
+}
+
+#skills li {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    /* each li will occupy 4 cols */
+    grid-column: span 4;
+    text-align: center;
+}
+
+#skills img {
+    height: 80px;
+    margin: 10px auto;
+}
+
+#contact {
+    padding: 30px 20px;
+    background-color: #080936;
+}
+
+#contact h3, #contact p {
+    text-align: center;
+}
+
+#contact form {
+    width: 80%;
+    max-width: 400px;
+    margin: 20px auto;
+    /* also centers the btn */
+    text-align: center;
+}
+
+#contact input, #contact textarea {
+    width: 100%;
+    margin: 10px 0;
+}
+
+#contact .btn {
+    margin-top: 10px;
+    /* as it causes error in btn */
+    background-color: transparent;
+}
+
+footer {
+    padding: 30px 20px;
+    background-color: #14153d;
+    background-image: url("./assets/footer_image.png");
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+footer .copyright {
+    /* 1st 2 cols */
+    grid-column: 1/3;
+    font-size: 0.8em;
+}
+
+footer .social {
+    /* last 2 cols */
+    grid-column: 7/9;
+    display: flex;
+    justify-content: flex-end;
+}
+
+footer li {
+    margin: 0 6px;
+}
+/* icons */
+footer img {
+    width: 20px;
+}
+
+/* small tablet styles */
+@media screen and (min-width: 620px) {
+    
+    .welcome-text {
+        grid-column: 1/5;
+    }
+    
+    .welcome-img {
+        grid-column: 5/9;
+    }
+
+    /* making img smaller */
+    .welcome-img img {
+        width: 100%;
+    }
+
+    .projects {
+        margin-top: 40px;
+    }
+    /* choosing grid items */
+    .projects a {
+        grid-column: span 4;
+        /* override the flex display in mobile styles */
+        display: block;
+        margin: 20px 0;
+    }
+
+    .projects a:last-child {
+        /* middle 4 cols */
+        grid-column: 3/7;
+    }
+
+    .projects a * {
+        margin: 10px;
+        /* increasing size */
+        max-width: 60%;
+        margin: 10px 20%;
+        /* it will centered -> 60% ele size, 20% + 20% = 40% margin (left & right) */
+    }
+
+    .projects h4 {
+        text-align: center;
+    }
+
+    #skills {
+        padding: 30px 100px;
+    }
+
+    footer {
+        background-size: 20%;
+    }
+}
+
+/* large tablets & latops styles */
+@media screen and (min-width: 960px) {
+    
+    body {
+        font-size: 18px;
+    }
+}
+
+/* desktop tablet styles */
+@media screen and (min-width: 1200px) {
+    
+    body {
+        font-size: 20px;
+    }
+}
